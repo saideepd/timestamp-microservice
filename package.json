@@ -1,0 +1,28 @@
+{
+  "name": "timestamp-microservice",
+  "version": "1.0.0",
+  "description": "A simple express based API microservice which returns UNIX and UTC timestamps for input date provided",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saideepd/timestamp-microservice.git"
+  },
+  "keywords": [
+    "Express",
+    "Node.js",
+    "API",
+    "microservice",
+    "freeCodeCamp",
+    "backend",
+    "JavaScript"
+  ],
+  "author": "Saideep Dicholkar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/saideepd/timestamp-microservice/issues"
+  },
+  "homepage": "https://github.com/saideepd/timestamp-microservice#readme"
+}
