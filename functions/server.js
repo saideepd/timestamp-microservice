@@ -3,6 +3,7 @@ const timestamp = require('./timestamp');
 const app = express();
 const serverless = require('serverless-http');
 const router = express.Router();
+const path = require('path');
 
 // enable CORS
 const cors = require('cors');
@@ -19,13 +20,8 @@ app.use(express.static('public'));
 
 // http://expressjs.com/en/starter/basic-routing.html
 router.get("/", function (req, res) {
-    // Removing /functions from the path of html file
-    const options = {
-        root: __dirname.includes('/functions') ? 
-                __dirname.replace('/functions', '')
-            :   __dirname.replace('/var/task', '')
-    };
-    res.sendFile('/dist/index.html', options);
+    // Path of html file
+    res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
 
