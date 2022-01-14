@@ -1,0 +1,48 @@
+body {
+	font-family: 'Courier', sans-serif;
+	font-size: 1.5em;
+	color: #222;
+	background-color: #FaFaFa;
+	text-align: center;
+	line-height: 1.4em;
+}
+
+.container {
+	padding: 0;
+	margin-top: 2em;
+}
+
+h1, h3 {
+  margin-top: 1.5em;
+}
+
+hr {
+	margin: 1em;
+}
+
+.footer {
+	margin-top: 2em;
+}
+
+code {
+  font-family: monospace;
+  padding: 0.5em;
+  color: black;
+  background-color: lightgrey;
+}
+
+ul {
+	list-style-type: none;
+}
+
+li {
+  margin-bottom: 0.5em;
+}
+
+a {
+	color: #2574A9;
+}
+
+img {
+	height: 24px;
+}
