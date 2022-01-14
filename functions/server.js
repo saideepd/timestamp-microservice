@@ -21,7 +21,9 @@ app.use(express.static('public'));
 router.get("/", function (req, res) {
     // Removing /functions from the path of html file
     const options = {
-        root: __dirname.replace('/functions', '')
+        root: __dirname.includes('/functions') ? 
+                __dirname.replace('/functions', '')
+            :   __dirname.replace('/var/task', '')
     };
     res.sendFile('/dist/index.html', options);
 });
