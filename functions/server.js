@@ -21,8 +21,16 @@ app.use(express.static('public'));
 // http://expressjs.com/en/starter/basic-routing.html
 router.get("/", function (req, res) {
     // Path of html file
-    console.log('dirname: ' + path.join(__dirname, '../dist/index.html'));
-    res.sendFile(path.resolve(__dirname, '../dist/index.html'));
+    res.json({
+        "Name": "Timestamp Microservice",
+        "Example Usage": [
+            "/api/2022-01-15",
+            "/api/1642204800000"
+        ],
+        "Example Output": {"unix":1642204800000,"utc":"Sat, 15 Jan 2022 00:00:00 GMT"},
+        "Made By": "https://github.com/saideepd/"
+    })
+    res.sendFile(path.join(__dirname, '../', 'dist/index.html'));
 });
 
 
