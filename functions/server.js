@@ -3,7 +3,7 @@ const timestamp = require('./timestamp');
 const app = express();
 const serverless = require('serverless-http');
 const router = express.Router();
-const path = require('path');
+// const path = require('path');
 
 // enable CORS
 const cors = require('cors');
@@ -14,6 +14,22 @@ app.use(function (req, res, next) {
     res.header("X-powered-by", "Efforts, Sweat, Dedication and Desire");
     next();
 });
+
+// Set up rate limiter: maximum of 10 requests per minute
+const rateLimit = require('express-rate-limit');
+const apiLimiter = rateLimit({
+    windowMs: 1 * 60 * 1000, // 1 Minute
+    max: 60
+});
+const staticLimiter = rateLimit({
+    windowMs: 1 * 60 * 1000, // 1 Minute
+    max: 60
+});
+
+// apply rate limiter to API requests
+app.use('/api/:date?', apiLimiter);
+// apply rate limiter to static file requests
+app.use('/', staticLimiter);
 
 // http://expressjs.com/en/starter/static-files.html
 // app.use(express.static('public'));
@@ -26,7 +42,7 @@ router.get("/", function (req, res) {
             "/api/2022-01-15",
             "/api/1642204800000"
         ],
-        "Example Output": {"unix":1642204800000,"utc":"Sat, 15 Jan 2022 00:00:00 GMT"},
+        "Example Output": { "unix": 1642204800000, "utc": "Sat, 15 Jan 2022 00:00:00 GMT" },
         "Made By": "https://github.com/saideepd/"
     })
     // Path of html file
