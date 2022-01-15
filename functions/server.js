@@ -22,7 +22,7 @@ app.use(express.static('public'));
 router.get("/", function (req, res) {
     // Path of html file
     console.log('dirname: ' + path.join(__dirname, '../dist/index.html'));
-    res.sendFile(path.join(__dirname, '../dist/index.html'));
+    res.sendFile(path.resolve(__dirname, '../dist/index.html'));
 });
 
 
