@@ -22,4 +22,9 @@ Access the API using either of these 2 services:
 - [[project url]/api/1642204800000](https://timestamp-api.netlify.app/api/1451001600000)
 
 ### Example Output
-`{ "unix": 1642204800000, "utc": "Sat, 15 Jan 2022 00:00:00 GMT" }`
+```json
+{
+    "unix": 1642204800000,
+    "utc": "Sat, 15 Jan 2022 00:00:00 GMT"
+}
+```
