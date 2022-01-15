@@ -33,8 +33,10 @@ app.use('/', staticLimiter);
 
 // http://expressjs.com/en/starter/basic-routing.html
 router.get("/", function (req, res) {
+    let currentDate = new Date();
+    let jsonDateTime = JSON.stringify({ unix: currentDate.getTime(), utc: currentDate.toUTCString() });
 
-    let html = `<!DOCTYPE html><title>Timestamp Microservice</title><link href=https://i.ibb.co/Vj5dJHg/favicon-16x16.png rel=icon type=image/png><style>body{font-family:Courier,sans-serif;font-size:1.5em;color:#222;background-color:#FaFaFa;text-align:center;line-height:1.4em}.container{padding:0;margin-top:2em}h1,h3{margin-top:1.5em}hr{margin:1em}.footer{margin-top:2em}code{font-family:monospace;padding:.5em;color:#000;background-color:#d3d3d3}ul{list-style-type:none}li{margin-bottom:.5em}a{color:#2574A9}img{height:24px}</style><h1>Timestamp Microservice</h1><hr><div class=container><h3>Example Usage:</h3><ul><li><a href=api/2015-12-25>[project url]/api/2022-01-15</a><li><a href=api/1451001600000>[project url]/api/1642204800000</a></ul><h3>Example Output:</h3><p><code>{"unix":1642204800000,"utc":"Sat, 15 Jan 2022 00:00:00 GMT"}</code></div><div class=footer><p>By <a href=https://github.com/saideepd/ >Saideep Dicholkar</a> <img alt="GitHub Logo"src=https://i.ibb.co/wCBny6v/github.png></div>`;
+    let html = `<!DOCTYPE html><title>Timestamp Microservice</title><link href=https://i.ibb.co/Vj5dJHg/favicon-16x16.png rel=icon type=image/png><style>body{font-family:Courier,sans-serif;font-size:1.5em;color:#222;background-color:#FaFaFa;text-align:center;line-height:1.4em}.container{padding:0;margin-top:2em}h1,h3{margin-top:1.5em}hr{margin:1em}.footer{margin-top:2em}code{font-family:monospace;padding:.5em;color:#000;background-color:#d3d3d3}ul{list-style-type:none}li{margin-bottom:.5em}a{color:#2574A9}img{height:24px}</style><h1>Timestamp Microservice</h1><hr><div class=container><h3>Example Usage:</h3><ul><li><a href=api/2015-12-25>[project url]/api/2022-01-15</a><li><a href=api/1451001600000>[project url]/api/1642204800000</a></ul><h3>Example Output:</h3><p><code>${jsonDateTime}</code></div><div class=footer><p>By <a href=https://github.com/saideepd/ >Saideep Dicholkar</a> <img alt="GitHub Logo"src=https://i.ibb.co/wCBny6v/github.png></div>`;
     res.send(html);
 });
 
