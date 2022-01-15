@@ -8,13 +8,19 @@ app.use(cors({ optionsSuccessStatus: 200 }));  // some legacy browsers choke on 
 
 // Set up rate limiter: maximum of 10 requests per minute
 const rateLimit = require('express-rate-limit');
-const limiter = rateLimit({
+const apiLimiter = rateLimit({
     windowMs: 1*60*1000, // 1 Minute
-    max: 10
+    max: 60
+});
+const staticLimiter = rateLimit({
+    windowMs: 1*60*1000, // 1 Minute
+    max: 60
 });
 
-// apply rate limiter to all requests
-app.use('/api/:date?', limiter);
+// apply rate limiter to API requests
+app.use('/api/:date?', apiLimiter);
+// apply rate limiter to static file requests
+app.use('/', staticLimiter);
 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
