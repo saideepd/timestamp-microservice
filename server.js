@@ -1,10 +1,20 @@
-var express = require('express');
-var timestamp = require('./timestamp');
-var app = express();
+const express = require('express');
+const timestamp = require('./timestamp');
+const app = express();
 
 // enable CORS
-var cors = require('cors');
+const cors = require('cors');
 app.use(cors({ optionsSuccessStatus: 200 }));  // some legacy browsers choke on 204
+
+// Set up rate limiter: maximum of 10 requests per minute
+const rateLimit = require('express-rate-limit');
+const limiter = rateLimit({
+    windowMs: 1*60*1000, // 1 Minute
+    max: 10
+});
+
+// apply rate limiter to all requests
+app.use('/api/:date?', limiter);
 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
